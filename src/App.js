@@ -1,23 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import PokemonList from "./components/PokemonList";
+import axios from "axios";
+import Pagination from "./components/Pagination.js";
+import './index.css';
+import Header from "./components/Header";
 
 function App() {
+
+  // initally pokemon is set to empty array
+  const [pokemons, setPokemons] = useState([]);
+
+  const [currentpageUrl, setCurrentpageUrl] = useState('https://pokeapi.co/api/v2/pokemon');
+  const [nextpageUrl, setNextpageUrl] = useState();
+  const [previouspageUrl, setPreviouspageUrl] = useState();
+
+  // setting a loading state
+  const [loading, setLoading] = useState(true);
+
+
+  // the function runs if the currentpgeurl changes
+  useEffect(() => {
+
+    setLoading(true);
+    let cancel;
+
+    axios.get(currentpageUrl, {cancelToken: new axios.CancelToken(c => cancel = c)}).then(res => {
+
+        setLoading(false)
+        setPokemons(res.data.results.map(Pokemon => Pokemon));
+        setNextpageUrl(res.data.next);
+        setPreviouspageUrl(res.data.previous);
+
+    })
+
+    return () => cancel()
+  }, [currentpageUrl])
+
+
+
+  // the setPokemon is any function which has pokeon has its parameter so we can do what ever we want
+  // like adding, deleting, updating, etc.
+
+
+  // for next page
+  let getNextpage = () => {
+    setCurrentpageUrl(nextpageUrl)
+  };
+
+  // for prev page
+  let getPreviouspage = () => {
+    setCurrentpageUrl(previouspageUrl);
+  }
+
+  if(loading) return (
+    <h1>
+      loading...
+    </h1>
+  )
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+
+      <PokemonList pokemons = {pokemons} />
+
+      <Pagination  nextPage = {nextpageUrl ? getNextpage : null} prevPage = {previouspageUrl ? getPreviouspage : null}/>
     </div>
   );
 }

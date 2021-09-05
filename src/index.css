@@ -1,13 +1,89 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.grid-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 2em auto;
+    padding: 1em;
+
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.btn button {
+  border-style: none;
+  padding: .6em 1.2em;
+  margin-right: 10px;
+  border-radius: 5px;
+  background: #00a2ff;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+
+
+.pokemon {
+  width:200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: .5em;
+  padding:1em;
+  margin: 1em;
+  cursor: pointer;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.types {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: .5em;
+}
+
+.type {
+    border-style: none;
+    padding: .4em 1em;
+    border-radius: .5em;
+    background: rgb(0, 162, 255);
+    color: #fff;
+    font-size: 1em;
+    margin: 0 .25em;
 }
