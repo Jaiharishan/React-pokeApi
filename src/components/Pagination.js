@@ -1,10 +1,12 @@
-import React from 'react'
-
+import React from 'react';
+import  Button  from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {FaArrowLeft, FaArrowRight} from 'react-icons/fa'
 const Pagination = ({nextPage, prevPage}) => {
     return (
-        <div className="btn">
-            {prevPage && <button onClick = {prevPage}>Prev</button>}
-            {nextPage && <button onClick = {nextPage}>Next</button>}
+        <div className="d-flex justify-content-center mb-5">
+            {prevPage && <Button style={{width: 'fit-content'}} className ='mx-2' onClick = {prevPage}> <FaArrowLeft className='mx-1' /> Prev  </Button>}
+            {nextPage && <Button style={{width: 'fit-content'}} className ='mx-2' onClick = {nextPage}> Next <FaArrowRight className='mx-1' /> </Button>}
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
+import { Modal } from 'bootstrap';
+import { Button } from 'bootstrap';
 
 const typeColors = {
     bug: '#729f3f',
@@ -29,6 +30,8 @@ const Pokemon = ({key, pokemon}) => {
 
     const [ourPokemon, setOurPokemon] = useState('');
 
+    const [showPokemon, setShowPokemon] = useState(false);
+
     const getPokemon = () => {
         axios.get(pokemon.url).then(res => {
             console.log(res.data);
@@ -43,22 +46,27 @@ const Pokemon = ({key, pokemon}) => {
 
 
     return (
-        <div className="pokemon">
+        <>
+            <div className="pokemon" onDoubleClick = {() => setShowPokemon(!showPokemon)}>
 
-            {ourPokemon && <img src={ourPokemon.sprites.front_default} alt="pokemonImg" />}
 
-            <div className="name">{ourPokemon.name}</div>
+                {ourPokemon && <img src={ourPokemon.sprites.front_default} alt="pokemonImg" />}
 
-            <div>{ourPokemon.weight}</div>
-
-            <div className='types'>
-                {ourPokemon && ourPokemon.types.map(t => (
+                <div className="name">{ourPokemon.name}</div>
 
                 
-                    <div key={t.type.name} className="type" style={{background : typeColors[t.type.name]}}>{t.type.name}</div>
-                ))}
+
+                <div className='types'>
+                    {ourPokemon && ourPokemon.types.map(t => (
+
+                    
+                        <div key={t.type.name} className="type" style={{background : typeColors[t.type.name]}}>{t.type.name}</div>
+                    ))}
+                </div>
             </div>
-        </div>
+
+            
+        </>
     )
 }
 

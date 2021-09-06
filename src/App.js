@@ -53,9 +53,9 @@ function App() {
   }
 
   if(loading) return (
-    <h1>
+    <div className='loading'>
       loading...
-    </h1>
+    </div>
   )
   
 

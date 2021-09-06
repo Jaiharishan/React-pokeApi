@@ -27,27 +27,9 @@ code {
 
 }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.btn button {
-  border-style: none;
-  padding: .6em 1.2em;
-  margin-right: 10px;
-  border-radius: 5px;
-  background: #00a2ff;
-  color: #fff;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-
 
 .pokemon {
-  width:200px;
+  width:250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,6 +39,33 @@ code {
   padding:1em;
   margin: 1em;
   cursor: pointer;
+  transition: .2s;
+}
+
+
+
+.showPokemon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background: white;
+  width:50%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: .5em;
+  padding:1em;
+  margin: 1em;
+  transition: .2s;
+}
+
+.pokemon:hover {
+  border: 1px solid rgb(0, 162, 255);
+  background: rgb(236, 248, 255);
 }
 
 .name {
@@ -71,11 +80,17 @@ code {
   margin-top: 1em;
 }
 
+.subheading {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+}
+
 .types {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: .5em;
+  margin-top: .75em;
 }
 
 .type {
