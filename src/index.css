@@ -102,3 +102,13 @@ code {
     font-size: 1em;
     margin: 0 .25em;
 }
+
+.info-header {
+  color: rgb(90, 90, 90);
+  font-size: 1.3rem;
+}
+
+.info-content {
+  color:rgb(75, 75, 75);
+  font-size: 1.125rem;
+}

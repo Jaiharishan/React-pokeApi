@@ -4,6 +4,7 @@ import axios from "axios";
 import Pagination from "./components/Pagination.js";
 import './index.css';
 import Header from "./components/Header";
+import Search from "./components/Search";
 
 function App() {
 
@@ -63,6 +64,8 @@ function App() {
     <div className="App">
       <Header/>
 
+      <Search />
+      
       <PokemonList pokemons = {pokemons} />
 
       <Pagination  nextPage = {nextpageUrl ? getNextpage : null} prevPage = {previouspageUrl ? getPreviouspage : null}/>
