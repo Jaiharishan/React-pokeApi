@@ -47,7 +47,7 @@ const MyVerticallyCenteredModal = ({show, onHide, fullscreen, pokemon}) => {
 
         <Modal.Body className = 'd-flex align-items-center flex-column'>
 
-            {pokemon && <img className='w-25' src={pokemon.sprites.front_default} alt="pokemonImg" />}
+            {pokemon && <img className='w-25' style={{background : 'rgba(247, 247, 247)', borderRadius: '50%'}} src={pokemon.sprites.front_default} alt="pokemonImg" />}
 
             <div className="display-6">{pokemon.name}</div>
 
@@ -59,24 +59,41 @@ const MyVerticallyCenteredModal = ({show, onHide, fullscreen, pokemon}) => {
                     ))}
             </div>
 
+
+            <div className="abilities d-flex flex-wrap h3 fw-light justify-content-center mt-5">
+                {pokemon && pokemon.abilities.map((ability, index) => {
+                    if (index !== pokemon.abilities.length - 1) {
+                        return (
+                            <div key={index} className='mx-1'>{ability.ability.name}, </div>
+                            )
+                    }else {
+                        return (
+                            <div key={index}>{ability.ability.name}</div>
+                            )
+                    }
+                    
+                })}
+                
+            </div>
+            <div className='info-header mt-0'>abilities</div>
+
             
 
             <div className="infos d-flex align-items-center justify-content-between mt-5 w-75 px-sm-5">
 
-                <div className="weight d-flex align-items-center flex-column">
+                <div className="weight d-flex align-items-start flex-column">
 
                     <div className='info-header'>Weight</div>
-                    
                     <p className='info-content'>{Number(pokemon.weight) / 10}kg</p>
 
                 </div>
 
-                <div className="weight d-flex align-items-center flex-column">
+                <div className="weight d-flex align-items-end flex-column">
 
                     <div className='info-header'>Weight</div>
-                    
                     <p className='info-content'>{Number(pokemon.weight) / 10}kg</p>
-
+                    
+                
                 </div>
 
             </div>
@@ -84,12 +101,12 @@ const MyVerticallyCenteredModal = ({show, onHide, fullscreen, pokemon}) => {
 
             <div className="infos d-flex align-items-center justify-content-between mt-4 w-75 px-sm-5">
 
-                <div className="height d-flex align-items-center flex-column">
+                <div className="height d-flex align-items-start flex-column">
                     <div className='info-header'>Height</div>
                     <p className='info-content'>{Number(pokemon.height) / 10}m</p>
                 </div>
 
-                <div className="height d-flex align-items-center flex-column">
+                <div className="height d-flex align-items-end flex-column">
                     <div className='info-header'>HitPoints</div>
                     <p className='info-content'>{pokemon && pokemon.stats[0].base_stat}</p>
                 </div>
@@ -99,12 +116,12 @@ const MyVerticallyCenteredModal = ({show, onHide, fullscreen, pokemon}) => {
 
             <div className="infos d-flex align-items-center justify-content-between mt-4 w-75 px-sm-5">
 
-                <div className="height d-flex align-items-center flex-column">
+                <div className="height d-flex align-items-start flex-column">
                     <div className='info-header'>Attack</div>
                     <p className='info-content'>{pokemon && pokemon.stats[1].base_stat}</p>
                 </div>
 
-                <div className="height d-flex align-items-center flex-column">
+                <div className="height d-flex align-items-end flex-column">
                     <div className='info-header'>Defence</div>
                     <p className='info-content'>{pokemon && pokemon.stats[2].base_stat}</p>
                 </div>
@@ -114,12 +131,12 @@ const MyVerticallyCenteredModal = ({show, onHide, fullscreen, pokemon}) => {
 
             <div className="infos d-flex align-items-center justify-content-between mt-4 w-75 px-sm-5">
 
-                <div className="height d-flex align-items-center flex-column">
+                <div className="height d-flex align-items-start flex-column">
                     <div className='info-header'>Speed</div>
                     <p className='info-content'>{pokemon && pokemon.stats[5].base_stat}</p>
                 </div>
 
-                <div className="height d-flex align-items-center flex-column">
+                <div className="height d-flex align-items-end flex-column">
                     <div className='info-header'>Experience</div>
                     <p className='info-content'>{pokemon && pokemon.base_experience}</p>
                 </div>
@@ -127,19 +144,9 @@ const MyVerticallyCenteredModal = ({show, onHide, fullscreen, pokemon}) => {
             </div>
 
 
-            <div className="infos d-flex align-items-center justify-content-between mt-4 w-75 px-sm-5">
 
-                <div className="height d-flex align-items-center flex-column">
-                    <div className='info-header'>S-Attack</div>
-                    <p className='info-content'>{pokemon && pokemon.stats[3].base_stat}</p>
-                </div>
 
-                <div className="height d-flex align-items-center flex-column">
-                    <div className='info-header'>S-Defence</div>
-                    <p className='info-content'>{pokemon && pokemon.stats[4].base_stat}</p>
-                </div>
 
-            </div>
         </Modal.Body>
 
 
@@ -153,7 +160,7 @@ const MyVerticallyCenteredModal = ({show, onHide, fullscreen, pokemon}) => {
   
 
 
-const Pokemon = ({key, pokemon}) => {
+const Pokemon = ({pokemon}) => {
 
     const [ourPokemon, setOurPokemon] = useState('');
 
@@ -163,14 +170,16 @@ const Pokemon = ({key, pokemon}) => {
 
     const [fullscreen, setFullscreen] = useState(true);
 
+
+
     function handleShow(breakpoint) {
         setFullscreen(breakpoint);
         setModalShow(true);
       }
 
 
-
     const getPokemon = () => {
+        console.log(pokemon);
         axios.get(pokemon.url).then(res => {
             console.log(res.data);
             setOurPokemon(res.data);

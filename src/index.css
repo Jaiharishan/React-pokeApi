@@ -104,11 +104,17 @@ code {
 }
 
 .info-header {
-  color: rgb(90, 90, 90);
+  color: rgb(37, 37, 37);
   font-size: 1.3rem;
 }
 
 .info-content {
-  color:rgb(75, 75, 75);
+  color:rgb(49, 49, 49);
   font-size: 1.125rem;
+}
+
+.ability {
+  color:rgb(49, 49, 49);
+  font-size: 2.5rem;
+  font-weight: lighter;
 }
