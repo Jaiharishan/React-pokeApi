@@ -1,7 +1,23 @@
-# React app for pokemons
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React-PokeApi
+    
+A pokemon dictionary built using pokepapi. Pokeapi is used to fetch data for the application. Visit https://pokeapi.co/ for reference.
 
-**Poke-api**:
-Pokeapi is used to fetch data for the application. Visit https://pokeapi.co/ for reference.
 
+
+## TECHSTACK USED
+
+- ReactJS
+- Bootstrap
+- Axios
+- [pokeapi](https://pokeapi.co/)
+
+
+
+
+## Features
+
+- The site can show all the available pokemons in a paginated way.
+- When clicked on a pokemon it shows more details about it.
+- You can search for any pokemon you want.
+- The UI is responsive and interactive.
